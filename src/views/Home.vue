@@ -13,13 +13,15 @@
       <div class="actions">
         <RouterLink to="/projects" class="btn primary"> Ver Projetos </RouterLink>
 
-        <a href="#sobre" class="btn secondary"> Saiba mais </a>
+        <a href="/about" class="btn secondary"> Saiba mais </a>
       </div>
     </div>
   </section>
 
   <!-- Âncora futura da página Sobre -->
-  <section id="sobre" class="scroll-hint">↓ Continue para saber mais</section>
+  <section id="about" class="scroll-hint">
+    ↓ <a href="/about" class="btn secondary">Continue para saber mais </a>
+  </section>
 </template>
 
 <style scoped>
