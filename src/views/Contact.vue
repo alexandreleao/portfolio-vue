@@ -1,157 +1,68 @@
 <template>
   <section class="contact">
-    <div class="container">
-      <h1>Contato</h1>
+    <h1>Contato</h1>
 
-      <p class="intro">
-        Quer conversar sobre um projeto, oportunidade ou colaboração? Preencha o formulário abaixo.
-      </p>
+    <p class="intro">
+      Quer conversar sobre um projeto ou oportunidade? Fique à vontade para entrar em contato.
+    </p>
 
-      <form class="form" @submit.prevent="handleSubmit">
-        <div class="field">
-          <label for="name">Nome</label>
-          <input id="name" v-model="form.name" type="text" placeholder="Seu nome" required />
-        </div>
+    <ul class="links">
+      <li>
+        <a href="mailto:seuemail@email.com"> 📧 Email </a>
+      </li>
 
-        <div class="field">
-          <label for="email">Email</label>
-          <input
-            id="email"
-            v-model="form.email"
-            type="email"
-            placeholder="seu@email.com"
-            required
-          />
-        </div>
+      <li>
+        <a href="https://github.com/seu-usuario" target="_blank"> 💻 GitHub </a>
+      </li>
 
-        <div class="field">
-          <label for="message">Mensagem</label>
-          <textarea
-            id="message"
-            v-model="form.message"
-            placeholder="Escreva sua mensagem"
-            rows="5"
-            required
-          ></textarea>
-        </div>
+      <li>
+        <a href="https://www.linkedin.com/in/seu-linkedin" target="_blank"> 🔗 LinkedIn </a>
+      </li>
 
-        <button type="submit" class="btn">Enviar mensagem</button>
-
-        <p v-if="success" class="success">Mensagem enviada com sucesso! 🚀</p>
-      </form>
-    </div>
+      <li>
+        <a href="https://wa.me/55SEUNUMERO" target="_blank"> 📱 WhatsApp </a>
+      </li>
+    </ul>
   </section>
 </template>
 
-<script setup lang="ts">
-import { reactive, ref } from 'vue'
-
-const success = ref(false)
-
-const form = reactive({
-  name: '',
-  email: '',
-  message: '',
-})
-
-const handleSubmit = () => {
-  if (!form.name || !form.email || !form.message) return
-
-  // Aqui futuramente entra EmailJS ou API
-  console.log('Dados do formulário:', form)
-
-  success.value = true
-
-  // Limpa formulário
-  form.name = ''
-  form.email = ''
-  form.message = ''
-
-  setTimeout(() => {
-    success.value = false
-  }, 4000)
-}
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .contact {
-  padding: 80px 20px;
-  background: #020617;
-  color: #f8fafc;
-}
-
-.container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 3rem 1rem;
+  color: #e5e7eb;
 }
 
-h1 {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 16px;
+.contact h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .intro {
-  text-align: center;
+  font-size: 1.1rem;
   color: #cbd5f5;
-  margin-bottom: 40px;
-  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
-.form {
-  background: #0f172a;
-  padding: 32px;
-  border-radius: 12px;
+.links {
+  list-style: none;
+  padding: 0;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+.links li {
+  margin-bottom: 1rem;
 }
 
-label {
-  margin-bottom: 6px;
-  font-size: 0.9rem;
-  color: #cbd5f5;
+.links a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
-input,
-textarea {
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  background: #020617;
-  color: #f8fafc;
-  font-size: 1rem;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #64748b;
-}
-
-.btn {
-  width: 100%;
-  padding: 14px;
-  border-radius: 8px;
-  border: none;
-  background: #38bdf8;
-  color: #020617;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  background: #0ea5e9;
-}
-
-.success {
-  margin-top: 20px;
-  color: #22c55e;
-  text-align: center;
-  font-weight: 500;
+.links a:hover {
+  text-decoration: underline;
 }
 </style>
