@@ -2,7 +2,9 @@
   <section class="projects">
     <h1>Projetos</h1>
 
-    <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
+    <div class="grid">
+      <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
+    </div>
   </section>
 </template>
 
@@ -21,8 +23,19 @@ onMounted(async () => {
 
 <style scoped>
 .projects {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 1rem;
+}
+
+.projects h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
 }
 </style>

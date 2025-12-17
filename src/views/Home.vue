@@ -1,119 +1,71 @@
 <template>
   <section class="hero">
-    <div class="hero-content animate">
+    <div class="content">
       <h1>Olá, eu sou <span>Alexandre</span></h1>
 
-      <h2>Desenvolvedor Full Stack</h2>
-
-      <p>
-        Crio aplicações web modernas, escaláveis e bem estruturadas, utilizando Vue.js, Angular e
-        Laravel.
-      </p>
+      <p>Desenvolvedor Full Stack com foco em aplicações web modernas, organizadas e escaláveis.</p>
 
       <div class="actions">
         <RouterLink to="/projects" class="btn primary"> Ver Projetos </RouterLink>
 
-        <a href="/about" class="btn secondary"> Saiba mais </a>
+        <a href="https://github.com/seu-usuario" target="_blank" class="btn secondary"> GitHub </a>
       </div>
     </div>
   </section>
-
-  <!-- Âncora futura da página Sobre -->
-  <section id="about" class="scroll-hint">
-    ↓ <a href="/about" class="btn secondary">Continue para saber mais </a>
-  </section>
 </template>
+
+<script setup lang="ts"></script>
 
 <style scoped>
 .hero {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: #f8fafc;
-  padding: 40px 20px;
+  background: linear-gradient(135deg, #020617, #020617);
+  color: #fff;
 }
 
-.hero-content {
-  max-width: 800px;
-  text-align: center;
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.hero h1 {
+h1 {
   font-size: 3rem;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
-.hero span {
+h1 span {
   color: #38bdf8;
 }
 
-.hero h2 {
-  font-weight: 400;
+p {
+  font-size: 1.2rem;
   color: #cbd5f5;
-  margin-bottom: 24px;
-}
-
-.hero p {
-  line-height: 1.7;
-  margin-bottom: 40px;
+  max-width: 600px;
 }
 
 .actions {
+  margin-top: 2rem;
   display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .btn {
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
-.btn.primary {
+.primary {
   background: #38bdf8;
   color: #020617;
 }
 
-.btn.primary:hover {
-  background: #0ea5e9;
-}
-
-.btn.secondary {
-  border: 2px solid #38bdf8;
+.secondary {
+  border: 1px solid #38bdf8;
   color: #38bdf8;
-}
-
-.btn.secondary:hover {
-  background: #38bdf8;
-  color: #020617;
-}
-
-/* ✨ Animação */
-.animate {
-  animation: fadeUp 0.8s ease forwards;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Scroll hint */
-.scroll-hint {
-  text-align: center;
-  padding: 40px 0;
-  color: #94a3b8;
 }
 </style>
