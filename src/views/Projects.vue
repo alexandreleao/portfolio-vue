@@ -2,33 +2,27 @@
   <section class="projects">
     <h1>Projetos</h1>
 
-    <div v-if="loading">Carregando...</div>
-
-    <div v-else class="grid">
-      <article v-for="project in projects" :key="project.id">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-
-        <ul>
-          <li v-for="tech in project.stack" :key="tech">{{ tech }}</li>
-        </ul>
-
-        <a :href="project.repoUrl" target="_blank">GitHub</a>
-      </article>
-    </div>
+    <ProjectCard v-for="project in projects" :key="project.id" :project="project" />
   </section>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { getProjects } from '@/services/projects.service'
-import type { Project } from '@/models/Project'
+import ProjectCard from '@/components/projects/ProjectCard.vue'
+import ProjectsService from '@/services/projects.service'
+import type { Project } from '@/data/projects.mock'
 
 const projects = ref<Project[]>([])
-const loading = ref(true)
 
 onMounted(async () => {
-  projects.value = await getProjects()
-  loading.value = false
+  projects.value = await ProjectsService.getAll()
 })
 </script>
+
+<style scoped>
+.projects {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+</style>
