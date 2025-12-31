@@ -1,35 +1,51 @@
-<template>
-  <div class="card">
-    <h3>{{ title }}</h3>
-
-    <p>{{ description }}</p>
-
-    <div class="tech">
-      <span v-for="tech in technologies" :key="tech">
-        {{ tech }}
-      </span>
-    </div>
-
-    <a :href="link" target="_blank" rel="noopener" class="btn"> Ver projeto </a>
-  </div>
-</template>
-
 <script setup lang="ts">
 defineProps<{
-  title: string
-  description: string
-  technologies: string[]
-  link: string
+  project: {
+    title: string
+    description: string
+    image: string
+    github_url: string
+    live_url: string | null
+  }
 }>()
 </script>
+
+<template>
+  <div class="card">
+    <div class="card-content">
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description }}</p>
+
+      <div class="card-actions">
+        <a
+          v-if="project.github_url"
+          :href="project.github_url"
+          target="_blank"
+          class="btn"
+        >
+          GitHub
+        </a>
+
+        <a
+          v-if="project.live_url"
+          :href="project.live_url"
+          target="_blank"
+          class="btn btn-primary"
+        >
+          Ver Projeto
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .card {
   background: #020617;
   color: #f8fafc;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 18px; /* antes 24px */
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
 
@@ -37,39 +53,39 @@ defineProps<{
   transform: translateY(-6px);
 }
 
-.card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
+
+.card-content {
+  padding: 16px;
 }
 
-.card p {
-  color: #cbd5f5;
-  line-height: 1.5;
-  margin-bottom: 16px;
+.card-content h3 {
+  margin-bottom: 10px;
+  color: #fff;
+  font: 1.2rem;;
 }
 
-.tech {
+.card-content p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.card-actions {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.tech span {
-  background: #0f172a;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  color: #38bdf8;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 10px 18px;
-  background: #38bdf8;
-  color: #020617;
+  padding: 8px 14px;
   border-radius: 6px;
-  font-weight: 600;
+  background: #333;
+  color: #fff;
   text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.btn-primary {
+  background: #42b883;
 }
 </style>
+

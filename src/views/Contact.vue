@@ -8,19 +8,21 @@
 
     <ul class="links">
       <li>
-        <a href="mailto:seuemail@email.com"> 📧 Email </a>
+        <a href="mailto:erdleosalgueiro@gmail.com"> 📧 Email </a>
       </li>
 
       <li>
-        <a href="https://github.com/seu-usuario" target="_blank"> 💻 GitHub </a>
+        <a href="https://github.com/alexandreleao" target="_blank"> 💻 GitHub </a>
       </li>
 
       <li>
-        <a href="https://www.linkedin.com/in/seu-linkedin" target="_blank"> 🔗 LinkedIn </a>
+        <a href="https://www.linkedin.com/in/alexandre-leão-383406134" target="_blank">
+          🔗 LinkedIn
+        </a>
       </li>
 
       <li>
-        <a href="https://wa.me/55SEUNUMERO" target="_blank"> 📱 WhatsApp </a>
+        <a href="https://wa.me/5571992786569" target="_blank"> 📱 WhatsApp </a>
       </li>
     </ul>
   </section>

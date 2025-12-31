@@ -7,8 +7,7 @@
 
       <div class="actions">
         <RouterLink to="/projects" class="btn primary"> Ver Projetos </RouterLink>
-
-        <a href="https://github.com/seu-usuario" target="_blank" class="btn secondary"> GitHub </a>
+        <a href="https://github.com/alexandreleao" target="_blank" class="btn secondary"> GitHub </a>
       </div>
     </div>
   </section>
