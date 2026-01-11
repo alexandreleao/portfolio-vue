@@ -17,21 +17,11 @@ defineProps<{
       <p>{{ project.description }}</p>
 
       <div class="card-actions">
-        <a
-          v-if="project.github_url"
-          :href="project.github_url"
-          target="_blank"
-          class="btn"
-        >
+        <a v-if="project.github_url" :href="project.github_url" target="_blank" class="btn">
           GitHub
         </a>
 
-        <a
-          v-if="project.live_url"
-          :href="project.live_url"
-          target="_blank"
-          class="btn btn-primary"
-        >
+        <a v-if="project.live_url" :href="project.live_url" target="_blank" class="btn btn-primary">
           Ver Projeto
         </a>
       </div>
@@ -53,7 +43,6 @@ defineProps<{
   transform: translateY(-6px);
 }
 
-
 .card-content {
   padding: 16px;
 }
@@ -61,7 +50,7 @@ defineProps<{
 .card-content h3 {
   margin-bottom: 10px;
   color: #fff;
-  font: 1.2rem;;
+  font: 1.2rem;
 }
 
 .card-content p {
@@ -88,4 +77,3 @@ defineProps<{
   background: #42b883;
 }
 </style>
-

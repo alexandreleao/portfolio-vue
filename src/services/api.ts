@@ -2,8 +2,9 @@ import axios from 'axios'
 
 const api = axios.create({
   baseURL: 'http://localhost:3000',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 })
 
-export function getProjects() {
-  return api.get('/projects')
-}
+export default api

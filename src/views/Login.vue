@@ -3,25 +3,15 @@
     <h1>Login</h1>
 
     <form @submit.prevent="handleLogin">
-      <input
-        type="email"
-        placeholder="Email"
-        v-model="email"
-        required
-      />
+      <input type="email" placeholder="Email" v-model="email" required />
 
-      <input
-        type="password"
-        placeholder="Senha"
-        v-model="password"
-        required
-      />
+      <input type="password" placeholder="Senha" v-model="password" required />
 
       <button type="submit" :disabled="loading">
         {{ loading ? 'Entrando...' : 'Entrar' }}
       </button>
 
-      <p v-if="error" class="error">Login inválido</p>
+      <p v-if="error" class="error">Email ou senha inválidos</p>
     </form>
   </section>
 </template>
@@ -29,30 +19,27 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { login } from '@/services/auth.service'
+import axios from 'axios'
 
 const email = ref('')
 const password = ref('')
-const loading = ref(false)
-const error = ref(false)
-
+const error = ref('')
 const router = useRouter()
 
-async function handleLogin() {
-  loading.value = true
-  error.value = false
-
+const handleLogin = async () => {
   try {
-    await login({
+    const response = await axios.post('http://localhost:3000/login', {
       email: email.value,
-      password: password.value
+      password: password.value,
     })
 
+    // salva token
+    localStorage.setItem('token', response.data.token)
+
+    // redireciona
     router.push('/dashboard')
-  } catch (e) {
-    error.value = true
-  } finally {
-    loading.value = false
+  } catch (err) {
+    error.value = 'Email ou senha inválidos'
   }
 }
 </script>
@@ -61,6 +48,15 @@ async function handleLogin() {
 .login {
   max-width: 400px;
   margin: 100px auto;
+  background: #020617;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+h1 {
+  color: #f8fafc;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 form {
@@ -71,6 +67,8 @@ form {
 
 input {
   padding: 10px;
+  border-radius: 6px;
+  border: none;
 }
 
 button {
@@ -78,9 +76,17 @@ button {
   background: #38bdf8;
   border: none;
   font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.7;
 }
 
 .error {
-  color: red;
+  color: #f87171;
+  font-size: 0.9rem;
+  text-align: center;
 }
 </style>

@@ -8,6 +8,8 @@
         <RouterLink to="/projects">Projetos</RouterLink>
         <RouterLink to="/about">Sobre</RouterLink>
         <RouterLink to="/contact">Contato</RouterLink>
+        <RouterLink v-if="!isLogged" to="/login">Login</RouterLink>
+        <button v-else @click="logout">Sair</button>
       </nav>
     </div>
   </header>

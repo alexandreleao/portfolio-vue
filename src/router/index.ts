@@ -5,16 +5,43 @@ import About from '@/views/About.vue'
 import Projects from '@/views/Projects.vue'
 import Contact from '@/views/Contact.vue'
 import Login from '@/views/Login.vue'
+import Dashboard from '@/views/Dashboard.vue'
 
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
   { path: '/projects', component: Projects },
   { path: '/contact', component: Contact },
-  { path: '/login', component: Login }, // Certifique-se de importar o componente Login
+  { path: '/login', component: Login },
+  {
+    path: '/dashboard',
+    component: Dashboard,
+    meta: { requiresAuth: true },
+  },
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+
+  if (to.meta.requiresAuth && !token) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('token')
+
+  if (to.path === '/dashboard' && !isAuthenticated) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+export default router
